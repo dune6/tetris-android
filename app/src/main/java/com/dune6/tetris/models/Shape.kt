@@ -1,7 +1,6 @@
 package com.dune6.tetris.models
 
 enum class Shape(val frameCount: Int, val startPosition: Int) {
-
     Tetromino(2, 2) {
         override fun getFrame(frameNumber: Int): Frame {
             return when (frameNumber) {
@@ -116,7 +115,7 @@ enum class Shape(val frameCount: Int, val startPosition: Int) {
                     .addRow("10")
                     .addRow("11")
                 2 -> Frame(3)
-                    .adcdRow("111")
+                    .addRow("111")
                     .addRow("100")
                 3 -> Frame(2)
                     .addRow("11")
@@ -128,4 +127,5 @@ enum class Shape(val frameCount: Int, val startPosition: Int) {
     };
 
     abstract fun getFrame(frameNumber: Int): Frame
+
 }

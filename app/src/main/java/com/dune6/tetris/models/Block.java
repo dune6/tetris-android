@@ -19,15 +19,18 @@ public class Block {
         this.frameNumber = 0;
         this.shapeIndex = shapeIndex;
         this.color = blockColor;
-        this.position = new Point(FieldConstants.COLUMN_COUNT.getValue() / 2, 0);
+        this.position = new Point(FieldConstants
+                .COLUMN_COUNT.getValue() / 2, 0);
     }
 
     public static Block createBlock() {
         Random random = new Random();
         int shapeIndex = random.nextInt(Shape.values().length);
-        BlockColor blockColor = BlockColor.values()[random.nextInt(BlockColor.values().length)];
+        BlockColor blockColor = BlockColor.values()
+                [random.nextInt(BlockColor.values().length)];
         Block block = new Block(shapeIndex, blockColor);
-        block.position.x = block.position.x - Shape.values()[shapeIndex].getStartPosition();
+        block.position.x = block.position.x - Shape.values()
+                [shapeIndex].getStartPosition();
         return block;
     }
 
@@ -38,8 +41,8 @@ public class Block {
         YELLOW(Color.rgb(255, 255, 0), (byte) 5),
         CYAN(Color.rgb(0, 255, 255), (byte) 6);
 
-        BlockColor(int rgb, byte value) {
-            this.rgbValue = rgb;
+        BlockColor(int rgbValue, byte value) {
+            this.rgbValue = rgbValue;
             this.byteValue = value;
         }
 
@@ -48,8 +51,10 @@ public class Block {
     }
 
     public static int getColor(byte value) {
-        for (BlockColor color : BlockColor.values()) {
-            if (value == color.byteValue) return color.rgbValue;
+        for (BlockColor colour : BlockColor.values()) {
+            if (value == colour.byteValue) {
+                return colour.rgbValue;
+            }
         }
         return -1;
     }
@@ -61,7 +66,7 @@ public class Block {
 
     @NonNull
     public final byte[][] getShape(int frameNumber) {
-        return Shape.values()[shapeIndex].getFrame(frameNumber).as2ByteArray();
+        return Shape.values()[shapeIndex].getFrame(frameNumber).as2dByteArray();
     }
 
     public Point getPosition() {
@@ -83,5 +88,4 @@ public class Block {
     public byte getStaticValue() {
         return color.byteValue;
     }
-
 }

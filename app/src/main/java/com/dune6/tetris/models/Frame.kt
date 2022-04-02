@@ -3,12 +3,9 @@ package com.dune6.tetris.models
 import com.dune6.tetris.helper.array2dOfByte
 
 class Frame(private val width: Int) {
-
-    val data: ArrayList<ByteArray> = ArrayList()
-
+    private val data: ArrayList<ByteArray> = ArrayList()
     fun addRow(byteStr: String): Frame {
         val row = ByteArray(byteStr.length)
-
         for (index in byteStr.indices) {
             row[index] = "${byteStr[index]}".toByte()
         }
@@ -16,7 +13,7 @@ class Frame(private val width: Int) {
         return this
     }
 
-    fun as2ByteArray(): Array<ByteArray> {
+    fun as2dByteArray(): Array<ByteArray> {
         val bytes = array2dOfByte(data.size, width)
         return data.toArray(bytes)
     }
